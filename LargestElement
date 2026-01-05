@@ -1,0 +1,21 @@
+Algorithm
+
+Brute force approach TC O(NlogN) SC O(1)
+for(int i=0; i<n-1; i++){
+  for(int j=0; j<n-i-1; j++){
+    if(arr[j]>arr[j+1]){
+       swap(arr[j], arr[j+1])
+   }
+}
+}
+return arr[n-1];
+
+
+Optimal Approach TC O(N) SC O(1)
+
+int max = arr[0]
+for(int i=1; i<n; i++){
+        if(arr[i]>max){
+            arr[i] = max
+    }
+}
