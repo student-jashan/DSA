@@ -1,0 +1,67 @@
+Algorithm
+
+FOR 2nd LARGEST ELEMENT (BRUTE FORCE APPROACH)
+
+int SecLargest(int arr[], int n) {
+    // Bubble Sort
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = 0; j < n - i - 1; j++) {
+            if(arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+    return arr[n - 2]; // largest element after sorting
+}
+
+
+
+
+
+FOR 2nd LARGEST/SMALLEST ELEMENT (Optimal Approach)
+
+int SecondLargest(int arr[], int n){
+    int Large = INT_MIN;
+    int secLarge = INT_MIN;
+
+    for(int i=0; i<n; i++){
+        if(arr[i]> Large){
+            secLarge = Large;
+            Large = arr[i];
+        }
+
+        else if (arr[i]<Large && arr[i]>secLarge){
+            secLarge = arr[i];
+        }
+    }
+    return (secLarge == INT_MIN) ? -1 : secLarge;
+}
+
+
+int SecondSmallest(int arr[], int n){
+    int Smallest = INT_MAX;
+    int secSmall = INT_MAX;
+
+    for(int i=0; i<n; i++){
+        if(arr[i] < Smallest){
+            secSmall = Smallest;
+            Smallest = arr[i];
+        }
+
+        else if (arr[i]>Smallest && arr[i]<secSmall){
+            secSmall = arr[i];
+        }
+    }
+    return (secSmall == INT_MIN) ? -1 : secSmall;
+}
+
+
+
+int main() {
+    int arr[] = {2, 5, 1, 13, 3};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Second Largest element: " << SecondLargest(arr, n)<<"\n";
+    cout << "Second Smallest element: " << SecondSmallest(arr, n);
+
+}
